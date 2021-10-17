@@ -1,0 +1,82 @@
+.main-div {
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  width: 100vw;
+  height: 100vh;
+  background-color: #007057;
+  color: white;
+}
+
+.choose-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.be-tooman-riyal-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.convert-input {
+    display: flex;
+}
+
+.choose-btn-toman {
+    background-color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #007057;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.choose-btn-riyal {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: rgb(0, 131, 50);
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.price-input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.convert-btn {
+    background-color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    margin-right: 5px;
+    font-weight: 400;
+}
+
+.result-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    direction: rtl;
+    padding: 0px 20px;
+}
+
+.refresh-btn {
+    background-color: #48b400;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin-right: 10px;
+    font-size: 12px;
+}
