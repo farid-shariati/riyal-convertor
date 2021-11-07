@@ -75,6 +75,7 @@ const RiyalAndToman = () => {
         <div className="convert-input">
         <input
           type="string"
+          dir="ltr"
           placeholder="ریال"
           value={tempPrice}
           onChange={(e) => commaAdder(e.target.value)}
@@ -94,6 +95,7 @@ const RiyalAndToman = () => {
       <div className="convert-input">
         <input
           type="string"
+          dir="ltr"
           placeholder="تومان"
           value={tempPrice}
           onChange={(e) => commaAdder(e.target.value)}
