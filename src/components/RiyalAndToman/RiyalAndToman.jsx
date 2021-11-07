@@ -4,6 +4,7 @@ import "./styles.css";
 
 const RiyalAndToman = () => {
   const [price, setPrice] = useState("");
+  const [tempPrice, setTempPrice] = useState("");
   const [beToman, setBeToman] = useState({});
   const [beRiyal, setBeRiyal] = useState({});
   const [isRiyalBeToman, setIsRiyalBeToman] = useState(false);
@@ -11,13 +12,18 @@ const RiyalAndToman = () => {
 
   const commaAdder = (value) => {
     const formattedValue = (Number(value.replace(/\D/g, '')) || '').toLocaleString();
-    setPrice(formattedValue)
+    setTempPrice(formattedValue)
+    const removeCommas = value.replace(/,/g,'');
+    setPrice(removeCommas)
+    console.log("val" ,removeCommas);
   }
 
   const onConvertToRiyal = () => {
     const tempRiyal = price + 0;
     const temp = numberToWords(tempRiyal);
     const tempNum = addCommas(tempRiyal);
+    console.log("tempNum", tempNum);
+    console.log("price", price);
     setBeRiyal({ words: temp, number: tempNum });
   };
 
@@ -53,6 +59,7 @@ const RiyalAndToman = () => {
         <button
           onClick={() => {
             setPrice("")
+            setTempPrice("")
             setBeRiyal({})
             setBeToman({})
           }}
@@ -68,9 +75,8 @@ const RiyalAndToman = () => {
         <div className="convert-input">
         <input
           type="string"
-          pattern="[0-9]"
           placeholder="ریال"
-          value={price}
+          value={tempPrice}
           onChange={(e) => commaAdder(e.target.value)}
           className="price-input"
         />
@@ -88,9 +94,8 @@ const RiyalAndToman = () => {
       <div className="convert-input">
         <input
           type="string"
-          pattern="[0-9]"
           placeholder="تومان"
-          value={price}
+          value={tempPrice}
           onChange={(e) => commaAdder(e.target.value)}
           className="price-input"
         />
