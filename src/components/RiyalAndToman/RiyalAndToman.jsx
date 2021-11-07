@@ -9,6 +9,11 @@ const RiyalAndToman = () => {
   const [isRiyalBeToman, setIsRiyalBeToman] = useState(false);
   const [showData, setShowData] = useState(false);
 
+  const commaAdder = (value) => {
+    const formattedValue = (Number(value.replace(/\D/g, '')) || '').toLocaleString();
+    setPrice(formattedValue)
+  }
+
   const onConvertToRiyal = () => {
     const tempRiyal = price + 0;
     const temp = numberToWords(tempRiyal);
@@ -57,43 +62,45 @@ const RiyalAndToman = () => {
         </button>
         </div>
       </div>
-      {!isRiyalBeToman && showData && (
-        <div className="be-tooman-riyal-div">
-            <p>قیمت رو به تومان وارد کن تا به ریال تبدیل بشه</p>
-          <div className="convert-input">
-            <input
-              type="number"
-              placeholder="تومان"
-              value={price}
-              onChange={(e) => {setPrice(e.target.value)}}
-              className="price-input"
-            />
-          <button className="convert-btn" onClick={onConvertToRiyal} disabled={price === "" || price <= 0}>تبدیل کن</button>
-          </div>
-          <div className="result-div">
-          <p > {beRiyal.number !== undefined ? ` ${beRiyal.number} ریال` : ""} </p>
-          <p > {beRiyal.words !== undefined ? ` ${beRiyal.words} ریال` : ""} </p>
-          </div>
-        </div>
-      )}
       {isRiyalBeToman && showData && (
         <div className="be-tooman-riyal-div">
-          <p>قیمت رو به ریال وارد کن تا به تومان تبدیل بشه</p>
-          <div className="convert-input">
-          <input
-            type="number"
-            placeholder="ریال"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            className="price-input"
-          />
-          <button className="convert-btn" onClick={onConvertToToman} disabled={price === "" || price <= 9}>تبدیل کن</button>
-          </div>
-          <div className="result-div">
-          <p> {beToman.number !== undefined ? ` ${beToman.number} تومان` : ""} </p>
-          <p> {beToman.words !== undefined ? ` ${beToman.words} تومان` : ""} </p>
-          </div>
+        <p>قیمت رو به ریال وارد کن تا به تومان تبدیل بشه</p>
+        <div className="convert-input">
+        <input
+          type="string"
+          pattern="[0-9]"
+          placeholder="ریال"
+          value={price}
+          onChange={(e) => commaAdder(e.target.value)}
+          className="price-input"
+        />
+        <button className="convert-btn" onClick={onConvertToToman} disabled={price === "" || price <= 9}>تبدیل کن</button>
         </div>
+        <div className="result-div">
+        <p> {beToman.number !== undefined ? ` ${beToman.number} تومان` : ""} </p>
+        <p> {beToman.words !== undefined ? ` ${beToman.words} تومان` : ""} </p>
+        </div>
+      </div>
+      )}
+      {!isRiyalBeToman && showData && (
+        <div className="be-tooman-riyal-div">
+        <p>قیمت رو به تومان وارد کن تا به ریال تبدیل بشه</p>
+      <div className="convert-input">
+        <input
+          type="string"
+          pattern="[0-9]"
+          placeholder="تومان"
+          value={price}
+          onChange={(e) => commaAdder(e.target.value)}
+          className="price-input"
+        />
+      <button className="convert-btn" onClick={onConvertToRiyal} disabled={price === "" || price <= 0}>تبدیل کن</button>
+      </div>
+      <div className="result-div">
+      <p > {beRiyal.number !== undefined ? ` ${beRiyal.number} ریال` : ""} </p>
+      <p > {beRiyal.words !== undefined ? ` ${beRiyal.words} ریال` : ""} </p>
+      </div>
+    </div>
       )}
     </div>
   );
